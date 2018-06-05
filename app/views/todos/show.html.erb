@@ -8,5 +8,5 @@
   description: <%= @todo.description %>
 </p>
 
-<%= link_to "Edit", edit_todo_path(@todo) %> |
-<%= link_to "Index", todos_path %>
+<%= link_to "Edit", edit_todo_path(@todo), class:"btn btn-success" %>
+<%= link_to "Index", todos_path, class:"btn btn-primary" %>

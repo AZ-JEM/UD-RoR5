@@ -1,23 +1,26 @@
 <h1>Todo list...</h1>
 
+<!-- table of ToDos -->
+<div class="table-responsive">
+  <table class="table table-striped">
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th colspan="3">Actions...</th>
+    </tr>
+    <% @todos.each do |todo| %>
+      <tr>
+        <td><%= todo.name %></td>
+        <td><%= todo.description %></td>
+        <td><%= link_to "Show", todo_path(todo), class:"btn btn-info" %></td>
+        <td><%= link_to "Edit", edit_todo_path(todo), class:"btn btn-success" %></td>
+        <td><%= link_to "Zap", todo_path(todo), class:"btn btn-danger", method: :delete, data: {confirm: "Delete Todo ?"} %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
 <!-- new todo action -->
 <p>
-  <%= link_to "New", new_todo_path %>
+  <%= link_to "New", new_todo_path, class: "btn btn-primary" %>
 </p>
-
-<!-- table of ToDos -->
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-  </tr>
-  <% @todos.each do |todo| %>
-    <tr>
-      <td><%= todo.name %></td>
-      <td><%= todo.description %></td>
-      <td><%= link_to "Show", todo_path(todo) %></td>
-      <td><%= link_to "Edit", edit_todo_path(todo) %></td>
-      <td><%= link_to "Zap", todo_path(todo), method: :delete, data: {confirm: "Delete Todo ?"} %></td>
-    </tr>
-  <% end %>
-</table>

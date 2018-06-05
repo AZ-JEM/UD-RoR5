@@ -7,8 +7,10 @@ ruby '2.5.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.0'
 
-# JEM : Move sqlite3 to development scope...
-
+# JEM : Moved sqlite3 to development scope...
+# ... added BS3 and jQuery gems...
+gem 'bootstrap-sass', '~>3.3.7'
+gem 'jquery-rails'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
