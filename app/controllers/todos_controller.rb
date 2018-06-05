@@ -1,4 +1,7 @@
 class TodosController < ApplicationController
+
+  before_action :select_todo, only: [:edit, :update, :show, :destroy]
+
   # ---------------------------------------------------------------------- /
   # list all todos
   # ---------------------------------------------------------------------- /
@@ -10,7 +13,7 @@ class TodosController < ApplicationController
   # show a todo
   # ---------------------------------------------------------------------- /
   def show
-    @todo = Todo.find(params[:id])
+    # see before action filter
   end
 
   # ---------------------------------------------------------------------- /
@@ -37,14 +40,14 @@ class TodosController < ApplicationController
   # edit
   # ---------------------------------------------------------------------- /
   def edit
-    @todo = Todo.find(params[:id])
+    # see before action filter
   end
 
   # ---------------------------------------------------------------------- /
   # update
   # ---------------------------------------------------------------------- /
   def update
-    @todo = Todo.find(params[:id])
+    # see before action filter
     if @todo.update(todo_params)
       flash[:notice] = "Update successful"
       redirect_to todo_path(@todo)
@@ -57,17 +60,29 @@ class TodosController < ApplicationController
   # zap a todo
   # ---------------------------------------------------------------------- /
   def destroy
-    @todo = Todo.find(params[:id])
+    # see before action filter
     @todo.destroy
     flash[:notice] = "Zapped ToDo"
     redirect_to todos_path
   end
 
-  # ---------------------------------------------------------------------- /
-  # white-listed parameters...
-  # ---------------------------------------------------------------------- /
-  private def todo_params
-    params.require(:todo).permit(:name, :description)
-  end
+  # ====================================================================== /
+  # Private methods :
+  # ====================================================================== /
+  private
+
+    # ---------------------------------------------------------------------- /
+    # white-listed parameters...
+    # ---------------------------------------------------------------------- /
+    def todo_params
+      params.require(:todo).permit(:name, :description)
+    end
+
+    # ---------------------------------------------------------------------- /
+    # DRY : refactor...
+    # ---------------------------------------------------------------------- /
+    def select_todo
+      @todo = Todo.find(params[:id])
+    end
 
 end
