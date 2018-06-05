@@ -29,7 +29,7 @@ class TodosController < ApplicationController
   def create
     @todo = Todo.new(todo_params)
     if @todo.save
-      flash[:notice] = "Successful commit"
+      flash[:notice] = "Created..."
       redirect_to todo_path(@todo)
     else
       render "new"
@@ -49,7 +49,7 @@ class TodosController < ApplicationController
   def update
     # see before action filter
     if @todo.update(todo_params)
-      flash[:notice] = "Update successful"
+      flash[:notice] = "Updated..."
       redirect_to todo_path(@todo)
     else
       render "edit"
@@ -62,7 +62,7 @@ class TodosController < ApplicationController
   def destroy
     # see before action filter
     @todo.destroy
-    flash[:notice] = "Zapped ToDo"
+    flash[:notice] = "Zapped..."
     redirect_to todos_path
   end
 
