@@ -1,0 +1,39 @@
+<h1>Edit todo...</h1>
+
+<!-- Errors -->
+<% if @todo.errors.any? %>
+
+  <h3>Errors :</h3>
+  <ul>
+    <% @todo.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+
+<% end %>
+<!-- end Error reporting -->
+
+<!-- Form -->
+<%= form_for @todo do |f| %>
+
+  <!-- name field -->
+  <p>
+    <%= f.label :name %>
+    <br>
+    <%= f.text_field :name %>
+  </p>
+
+  <!-- description field -->
+  <p>
+    <%= f.label :description %>
+    <br>
+    <%= f.text_area :description %>
+  </p>
+
+  <!-- submit button -->
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>
+<!-- end Form -->
