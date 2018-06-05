@@ -1,0 +1,23 @@
+<h1>Todo list...</h1>
+
+<!-- new todo action -->
+<p>
+  <%= link_to "New", new_todo_path %>
+</p>
+
+<!-- table of ToDos -->
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+  </tr>
+  <% @todos.each do |todo| %>
+    <tr>
+      <td><%= todo.name %></td>
+      <td><%= todo.description %></td>
+      <td><%= link_to "Show", todo_path(todo) %></td>
+      <td><%= link_to "Edit", edit_todo_path(todo) %></td>
+      <td><%= link_to "Zap", todo_path(todo), method: :delete, data: {confirm: "Delete Todo ?"} %></td>
+    </tr>
+  <% end %>
+</table>
