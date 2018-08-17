@@ -10,10 +10,10 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-
   </head>
 
-  <body>
+  <!-- body with available ApplicationController tracing -->
+  <%= content_tag :body, data: { controller: controller_name, action: action_name } do %>
 
     <main class="container">
       <div id="view">
@@ -22,5 +22,7 @@
       </div>
     </main>
 
-  </body>
+    <% end %>
+    <!-- end body -->
+
 </html>
